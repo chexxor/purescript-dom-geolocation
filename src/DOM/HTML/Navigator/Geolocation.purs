@@ -1,7 +1,7 @@
 module DOM.HTML.Navigator.Geolocation where
 
 import Control.Monad.Aff (Aff, makeAff)
-import Control.Monad.Eff (Eff)
+import Control.Monad.Eff (Eff, kind Effect)
 import Control.Monad.Eff.Exception (error)
 import DOM (DOM)
 import DOM.HTML.Types (Navigator)
@@ -11,10 +11,10 @@ import Data.Tuple (Tuple(..))
 import Prelude (Unit)
 
 -- | The effect type of the location side effect.
-foreign import data LOCATION :: !
+foreign import data LOCATION :: Effect
 
 -- | The Geolocation API source provided by the browser.
-foreign import data NavigatorGeolocation :: *
+foreign import data NavigatorGeolocation :: Type
 
 -- | A geolocation object if the current browser supports
 -- | the Geolocation API; otherwise, null.
